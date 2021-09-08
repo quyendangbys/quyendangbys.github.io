@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { EFilterChart } from 'src/app/shared/enums/filter-chart.enum';
 
+
 declare var require: any;
 let Boost = require('highcharts/modules/boost');
 let noData = require('highcharts/modules/no-data-to-display');
@@ -460,11 +461,188 @@ export class HomeComponent implements OnInit {
     ],
   };
 
+  public optionATM: any = {
+    chart: {
+      type: 'area',
+      marginRight: 30,
+      marginLeft: 30,
+      backgroundColor: '#1f2b43',
+    },
+    title: {
+      text: null
+    },
+    legend: {
+      layout: 'vertical',
+      align: 'left',
+      verticalAlign: 'top',
+      x: -150,
+      y: 100,
+      floating: true,
+      borderWidth: 1,
+      backgroundColor: '#2f405d',
+    },
+    xAxis: {
+      tickmarkPlacement: 'on',
+      startOnTick: true,
+      categories: [
+        'Mon',
+        'Tue',
+        'Wed',
+        'Thu',
+        'Fri',
+        'Sat',
+        'Sun'
+      ],
+      accessibility: {
+        enabled: true,
+      }
+    },
+    yAxis: {
+      title: {
+        text: null
+      },
+      visible: true,
+      enabled: true,
+      labels: {
+        enabled: false
+      },
+      gridLineColor: '#30425f'
+    },
+    tooltip: {
+      shared: true,
+      valueSuffix: ' units'
+    },
+    credits: {
+      enabled: false
+    },
+    plotOptions: {
+      series: {
+        pointPlacement: 'on',
+        marker: {
+          enabled: false
+        },
+      },
+      area: {
+        lineColor: '#2495c8'
+      },
+    },
+    series: [{
+      name: 'John',
+      data: [3, 4.5, 5, 4.5, 5, 8, 12],
+      color: '#2f405d '
+    }, {
+      type: 'area',
+    }]
+  };
+
+  public optionPie: any = {
+    chart: {
+      plotBackgroundColor: null,
+      plotBorderWidth: null,
+      plotShadow: false,
+      type: 'pie'
+    },
+    title: {
+      text: 'Quota summary'
+    },
+    tooltip: {
+      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+      point: {
+        valueSuffix: '%'
+      }
+    },
+    plotOptions: {
+      pie: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: false
+        },
+        showInLegend: true
+      }
+    },
+    series: [{
+      // name: 'Brands',
+      colorByPoint: true,
+      data: [{
+        name: 'Approved',
+        y: 61.41,
+        sliced: true,
+        selected: true,
+        color: '#1592e6'
+      }, {
+        name: 'Spent',
+        y: 11.84,
+        color: '#62e8c8'
+      }, {
+        name: 'Remaining',
+        y: 10.85,
+        color: '#fee43f'
+      }]
+    }]
+  };
+
+
+  public optionPieChart2: any = {
+    chart: {
+      type: 'variablepie'
+    },
+    title: {
+      text: 'Countries compared by population density and total area.'
+    },
+    tooltip: {
+      headerFormat: '',
+      pointFormat: '<span style="color:{point.color}">\u25CF</span> <b> {point.name}</b><br/>' +
+        'Area (square km): <b>{point.y}</b><br/>' +
+        'Population density (people per square km): <b>{point.z}</b><br/>'
+    },
+    series: [{
+      minPointSize: 10,
+      innerSize: '20%',
+      zMin: 0,
+      name: 'countries',
+      data: [{
+        name: 'Spain',
+        y: 505370,
+        z: 92.9
+      }, {
+        name: 'France',
+        y: 551500,
+        z: 118.7
+      }, {
+        name: 'Poland',
+        y: 312685,
+        z: 124.6
+      }, {
+        name: 'Czech Republic',
+        y: 78867,
+        z: 137.5
+      }, {
+        name: 'Italy',
+        y: 301340,
+        z: 201.8
+      }, {
+        name: 'Switzerland',
+        y: 41277,
+        z: 214.5
+      }, {
+        name: 'Germany',
+        y: 357022,
+        z: 235.6
+      }]
+    }]
+  }
+
+
   constructor() { }
 
   ngOnInit(): void {
-    Highcharts.chart('stationChart', this.options1);
-    Highcharts.chart('fuelChart', this.options2);
+    // Highcharts.chart('stationChart', this.options1);
+    // Highcharts.chart('fuelChart', this.options2);
+    Highcharts.chart('ATMChart', this.optionATM);
+    Highcharts.chart('pieChart', this.optionPieChart2);
   }
 
   filterChartStation(type: string): void {
