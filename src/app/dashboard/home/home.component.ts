@@ -469,7 +469,7 @@ export class HomeComponent implements OnInit {
       backgroundColor: '#1f2b43',
     },
     title: {
-      text: null
+      text: null,
     },
     legend: {
       layout: 'vertical',
@@ -484,55 +484,50 @@ export class HomeComponent implements OnInit {
     xAxis: {
       tickmarkPlacement: 'on',
       startOnTick: true,
-      categories: [
-        'Mon',
-        'Tue',
-        'Wed',
-        'Thu',
-        'Fri',
-        'Sat',
-        'Sun'
-      ],
+      categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
       accessibility: {
         enabled: true,
-      }
+      },
     },
     yAxis: {
       title: {
-        text: null
+        text: null,
       },
       visible: true,
       enabled: true,
       labels: {
-        enabled: false
+        enabled: false,
       },
-      gridLineColor: '#30425f'
+      gridLineColor: '#30425f',
     },
     tooltip: {
       shared: true,
-      valueSuffix: ' units'
+      valueSuffix: ' units',
     },
     credits: {
-      enabled: false
+      enabled: false,
     },
     plotOptions: {
       series: {
         pointPlacement: 'on',
         marker: {
-          enabled: false
+          enabled: false,
         },
       },
       area: {
-        lineColor: '#2495c8'
+        lineColor: '#2495c8',
       },
     },
-    series: [{
-      name: 'John',
-      data: [3, 4.5, 5, 4.5, 5, 8, 12],
-      color: '#2f405d '
-    }, {
-      type: 'area',
-    }]
+    series: [
+      {
+        name: 'John',
+        data: [3, 4.5, 5, 4.5, 5, 8, 12],
+        color: '#2f405d ',
+      },
+      {
+        type: 'area',
+      },
+    ],
   };
 
   public optionPie: any = {
@@ -540,109 +535,201 @@ export class HomeComponent implements OnInit {
       plotBackgroundColor: null,
       plotBorderWidth: null,
       plotShadow: false,
-      type: 'pie'
+      type: 'pie',
     },
     title: {
-      text: 'Quota summary'
+      text: 'Quota summary',
     },
     tooltip: {
-      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>',
     },
     accessibility: {
       point: {
-        valueSuffix: '%'
-      }
+        valueSuffix: '%',
+      },
     },
     plotOptions: {
       pie: {
         allowPointSelect: true,
         cursor: 'pointer',
         dataLabels: {
-          enabled: false
+          enabled: false,
         },
-        showInLegend: true
-      }
+        showInLegend: true,
+      },
     },
-    series: [{
-      // name: 'Brands',
-      colorByPoint: true,
-      data: [{
-        name: 'Approved',
-        y: 61.41,
-        sliced: true,
-        selected: true,
-        color: '#1592e6'
-      }, {
-        name: 'Spent',
-        y: 11.84,
-        color: '#62e8c8'
-      }, {
-        name: 'Remaining',
-        y: 10.85,
-        color: '#fee43f'
-      }]
-    }]
+    series: [
+      {
+        // name: 'Brands',
+        colorByPoint: true,
+        data: [
+          {
+            name: 'Approved',
+            y: 61.41,
+            sliced: true,
+            selected: true,
+            color: '#1592e6',
+          },
+          {
+            name: 'Spent',
+            y: 11.84,
+            color: '#62e8c8',
+          },
+          {
+            name: 'Remaining',
+            y: 10.85,
+            color: '#fee43f',
+          },
+        ],
+      },
+    ],
   };
-
 
   public optionPieChart2: any = {
     chart: {
-      type: 'variablepie'
+      type: 'pie',
+    },
+    credits: {
+      enabled: false,
     },
     title: {
-      text: 'Countries compared by population density and total area.'
+      text: 'Quota Summary',
+      align: 'left',
+      x: 13,
+      y: 20,
+      style: {
+        color: 'red',
+      },
     },
     tooltip: {
-      headerFormat: '',
-      pointFormat: '<span style="color:{point.color}">\u25CF</span> <b> {point.name}</b><br/>' +
-        'Area (square km): <b>{point.y}</b><br/>' +
-        'Population density (people per square km): <b>{point.z}</b><br/>'
+      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>',
     },
-    series: [{
-      minPointSize: 10,
-      innerSize: '20%',
-      zMin: 0,
-      name: 'countries',
-      data: [{
-        name: 'Spain',
-        y: 505370,
-        z: 92.9
-      }, {
-        name: 'France',
-        y: 551500,
-        z: 118.7
-      }, {
-        name: 'Poland',
-        y: 312685,
-        z: 124.6
-      }, {
-        name: 'Czech Republic',
-        y: 78867,
-        z: 137.5
-      }, {
-        name: 'Italy',
-        y: 301340,
-        z: 201.8
-      }, {
-        name: 'Switzerland',
-        y: 41277,
-        z: 214.5
-      }, {
-        name: 'Germany',
-        y: 357022,
-        z: 235.6
-      }]
-    }]
-  }
+    accessibility: {
+      point: {
+        valueSuffix: '%',
+      },
+    },
+    plotOptions: {
+      pie: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: false,
+        },
+        showInLegend: true,
+      },
+    },
+    legend: {
+      itemStyle: {
+        color: 'red', // change legend text color of definition label
+      },
+    },
+    series: [
+      {
+        innerSize: '32%',
+        borderWidth: 8,
+        borderColor: '#fff',
+        name: 'Brands',
+        colorByPoint: true,
+        data: [
+          {
+            name: 'Approved',
+            y: 50,
+            color: '#1592e6',
+          },
+          {
+            name: 'Spent',
+            y: 40,
+            color: '#62e8c8',
+          },
+          {
+            name: 'Remaining',
+            y: 10,
+            color: '#fee43f',
+          },
+        ],
+      },
+    ],
+  };
 
+  public optionLineChart: any = {
+    chart: {
+      type: 'spline',
+    },
+    title: {
+      text: 'Sales Forecast Vs Actial',
+      align: 'left',
+      x: 13,
+      y: 20,
+      style: {
+        color: 'red',
+      },
+    },
+    xAxis: {
+      categories: [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec',
+      ],
+    },
+    yAxis: {
+      title: {
+        text: '',
+      },
+      labels: {
+        formatter: function () {
+          return this.value;
+        },
+      },
+    },
+    tooltip: {
+      crosshairs: true,
+      shared: true,
+    },
+    plotOptions: {
+      spline: {
+        marker: {
+          radius: 4,
+          lineColor: '#666666',
+          lineWidth: 1,
+        },
+      },
+    },
+    series: [
+      {
+        name: 'Tokyo',
+        marker: {
+          symbol: 'circle',
+        },
+        data: [40, 30, 45, 40, 50, 50, 38, 48, 32, 40, 31, 60],
+      },
+      {
+        name: 'London',
+        marker: {
+          symbol: 'circle',
+        },
+        data: [4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8],
+      },
+    ],
+  };
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     // Highcharts.chart('stationChart', this.options1);
     // Highcharts.chart('fuelChart', this.options2);
-    Highcharts.chart('ATMChart', this.optionATM);
-    Highcharts.chart('pieChart', this.optionPieChart2);
+    // Highcharts.chart('ATMChart', this.optionATM);
+    // Highcharts.chart('pieChart', this.optionPieChart2);
+    Highcharts.chart('lineChart', this.optionLineChart);
   }
 
   filterChartStation(type: string): void {
