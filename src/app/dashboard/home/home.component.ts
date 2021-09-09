@@ -487,10 +487,12 @@ export class HomeComponent implements OnInit {
     },
     xAxis: {
       tickmarkPlacement: 'on',
+      type: 'category',
       startOnTick: true,
       categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
       accessibility: {
         enabled: true,
+        rangeDescription: 'Range: Monday to Sunday',
       },
     },
     yAxis: {
@@ -504,6 +506,27 @@ export class HomeComponent implements OnInit {
       },
       gridLineColor: '#30425f',
     },
+    // xAxis: {
+    //   allowDecimals: false,
+    //   labels: {
+    //     formatter: function () {
+    //       return this.value; // clean, unformatted number for year
+    //     },
+    //   },
+    //   accessibility: {
+    //     rangeDescription: 'Range: 1940 to 2017.',
+    //   },
+    // },
+    // yAxis: {
+    //   title: {
+    //     text: 'Nuclear weapon states',
+    //   },
+    //   labels: {
+    //     formatter: function () {
+    //       return this.value / 1000 + 'k';
+    //     },
+    //   },
+    // },
     tooltip: {
       shared: true,
       valueSuffix: ' units',
@@ -527,6 +550,7 @@ export class HomeComponent implements OnInit {
         name: 'Forecast',
         data: [3, 4.5, 5, 4.5, 5, 8, 12],
         color: '#2f405d ',
+        // type: 'arearange',
       },
     ],
   };
@@ -655,7 +679,7 @@ export class HomeComponent implements OnInit {
 
   public optionLineChart: any = {
     chart: {
-      type: 'spline'
+      type: 'spline',
     },
     title: {
       text: 'Sales Forecast Vs Actual',
@@ -674,8 +698,11 @@ export class HomeComponent implements OnInit {
       align: 'left',
       style: {
         fontFamily: 'circle',
-        fontSize: '1.2em'
-      }
+        fontSize: '1.2em',
+      },
+      symbolWidth: 5,
+      symbolHeight: 20,
+      squareSymbol: false,
       // verticalAlign: 'top',
       // x: -150,
       // y: 100,
@@ -685,51 +712,46 @@ export class HomeComponent implements OnInit {
     },
     xAxis: {
       type: 'datetime',
-      dateTimeLabelFormats: { // don't display the dummy year
+      dateTimeLabelFormats: {
+        // don't display the dummy year
         month: '%e. %b',
-        year: '%b'
+        year: '%b',
       },
       title: {
-        text: null
+        text: null,
       },
-      plotBands: [{
-        from: Date.UTC(2021, 0, 1),
-        to: Date.UTC(2021, 3, 5),
-        color: '#1d2b43',
-        borderColor: '#7d8f9f',
-        borderWidth: 1,
-        label: {
-          text: 'Current Time',
-          style: {
-            color: '#1d2b43',
-            fontSize: '0.9em',
-            // position: 'absolute',
-            // fontFamily: 'monospace',
+      plotBands: [
+        {
+          from: Date.UTC(2021, 0, 1),
+          to: Date.UTC(2021, 3, 5),
+          color: '#1d2b43',
+          borderColor: '#7d8f9f',
+          borderWidth: 1,
+          label: {
+            text: 'Current Time',
+            style: {
+              color: '#1d2b43',
+              fontSize: '0.9em',
+              // position: 'absolute',
+              // fontFamily: 'monospace',
+            },
+            verticalAlign: 'top',
+            x: 125,
+            y: 40,
+            rotation: 270,
           },
-          verticalAlign: 'top',
-          x: 125,
-          y: 40,
-          rotation: 270
-        }
-      }]
+        },
+      ],
     },
     yAxis: {
       title: {
-        text: null
+        text: null,
       },
-      min: 0
+      min: 0,
     },
     tooltip: {
       headerFormat: '<b>{series.name}</b><br>',
-      pointFormat: '{point.x:%e. %b}: {point.y:.2f} m'
-    },
-
-    plotOptions: {
-      series: {
-        marker: {
-          enabled: false
-        }
-      }
+      pointFormat: '{point.x:%e. %b}: {point.y:.2f} m',
     },
 
     colors: ['#6CF', '#39F', '#06C', '#036', '#000'],
@@ -737,69 +759,81 @@ export class HomeComponent implements OnInit {
     // Define the data points. All series have a dummy year
     // of 1970/71 in order to be compared on the same x axis. Note
     // that in JavaScript, months start at 0 for January, 1 for February etc.
-    series: [{
-      name: "Actual",
-      data: [
-        [Date.UTC(2021, 0, 1), 60],
-        [Date.UTC(2021, 0, 20), 45],
-        [Date.UTC(2021, 1, 1), 50],
-        [Date.UTC(2021, 1, 15), 65],
-        [Date.UTC(2021, 2, 3), 85],
-        [Date.UTC(2021, 2, 15), 50],
-        [Date.UTC(2021, 3, 1), 9],
-        [Date.UTC(2021, 3, 5), 0]
-      ],
-      color: '#5ddabe'
-    },
-    {
-      name: "Forecast",
-      data: [
-        [Date.UTC(2021, 0, 1), 42],
-        [Date.UTC(2021, 0, 20), 25],
-        [Date.UTC(2021, 1, 1), 30],
-        [Date.UTC(2021, 1, 15), 40],
-        [Date.UTC(2021, 2, 3), 45],
-        [Date.UTC(2021, 2, 15), 42],
-        [Date.UTC(2021, 3, 1), 40],
-        [Date.UTC(2021, 3, 10), 38],
-        [Date.UTC(2021, 4, 15), 41],
-        [Date.UTC(2021, 4, 20), 46],
-        [Date.UTC(2021, 5, 25), 60],
-        [Date.UTC(2021, 5, 30), 50],
-        [Date.UTC(2021, 6, 5), 47],
-        [Date.UTC(2021, 6, 11), 41],
-        [Date.UTC(2021, 7, 17), 47],
-        [Date.UTC(2021, 7, 20), 42],
-        [Date.UTC(2021, 8, 10), 35],
-        [Date.UTC(2021, 8, 30), 38],
-        [Date.UTC(2021, 9, 5), 48],
-        [Date.UTC(2021, 9, 26), 42],
-        [Date.UTC(2021, 10, 19), 40],
-        [Date.UTC(2021, 10, 20), 45],
-        [Date.UTC(2021, 11, 2), 47],
-        [Date.UTC(2021, 11, 7), 60]
-      ],
-      color: '#2391c3'
-    }],
-    responsive: {
-      rules: [{
-        condition: {
-          maxWidth: 500
+    series: [
+      {
+        marker: {
+          enabledThreshold: 3,
+          symbol: 'circle',
         },
-        chartOptions: {
-          plotOptions: {
-            series: {
-              marker: {
-                enabled: false,
-              }
-            }
-          }
-        }
-      }]
-    }
+        name: 'Actual',
+        data: [
+          [Date.UTC(2021, 0, 1), 60],
+          [Date.UTC(2021, 0, 20), 45],
+          [Date.UTC(2021, 1, 1), 50],
+          [Date.UTC(2021, 1, 15), 65],
+          [Date.UTC(2021, 2, 3), 85],
+          [Date.UTC(2021, 2, 15), 50],
+          [Date.UTC(2021, 3, 1), 9],
+          [Date.UTC(2021, 3, 5), 0],
+        ],
+        color: '#5ddabe',
+      },
+      {
+        marker: {
+          enabledThreshold: 3,
+          symbol: 'circle',
+        },
+        name: 'Forecast',
+        data: [
+          [Date.UTC(2021, 0, 1), 42],
+          [Date.UTC(2021, 0, 20), 25],
+          [Date.UTC(2021, 1, 1), 30],
+          [Date.UTC(2021, 1, 15), 40],
+          [Date.UTC(2021, 2, 3), 45],
+          [Date.UTC(2021, 2, 15), 42],
+          [Date.UTC(2021, 3, 1), 40],
+          [Date.UTC(2021, 3, 10), 38],
+          [Date.UTC(2021, 4, 15), 41],
+          [Date.UTC(2021, 4, 20), 46],
+          [Date.UTC(2021, 5, 25), 60],
+          [Date.UTC(2021, 5, 30), 50],
+          [Date.UTC(2021, 6, 5), 47],
+          [Date.UTC(2021, 6, 11), 41],
+          [Date.UTC(2021, 7, 17), 47],
+          [Date.UTC(2021, 7, 20), 42],
+          [Date.UTC(2021, 8, 10), 35],
+          [Date.UTC(2021, 8, 30), 38],
+          [Date.UTC(2021, 9, 5), 48],
+          [Date.UTC(2021, 9, 26), 42],
+          [Date.UTC(2021, 10, 19), 40],
+          [Date.UTC(2021, 10, 20), 45],
+          [Date.UTC(2021, 11, 2), 47],
+          [Date.UTC(2021, 11, 7), 60],
+        ],
+        color: '#2391c3',
+      },
+    ],
+    responsive: {
+      rules: [
+        {
+          condition: {
+            maxWidth: 500,
+          },
+          chartOptions: {
+            plotOptions: {
+              series: {
+                marker: {
+                  enabled: false,
+                },
+              },
+            },
+          },
+        },
+      ],
+    },
   };
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     // Highcharts.chart('stationChart', this.options1);
