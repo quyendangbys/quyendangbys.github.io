@@ -1,13 +1,18 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { EFilterChart } from 'src/app/shared/enums/filter-chart.enum';
 
-
 declare var require: any;
-let Boost = require('highcharts/modules/boost');
-let noData = require('highcharts/modules/no-data-to-display');
-let More = require('highcharts/highcharts-more');
+const Boost = require('highcharts/modules/boost');
+const noData = require('highcharts/modules/no-data-to-display');
+const More = require('highcharts/highcharts-more');
 
 Boost(Highcharts);
 noData(Highcharts);
@@ -432,28 +437,28 @@ export class HomeComponent implements OnInit {
     },
     series: [
       {
-        //	y: 0,
-        //	mydata: 10,
+        // 	y: 0,
+        // 	mydata: 10,
         name: 'EURO4-97',
         data: [20100, 39700, 20000, 38000, 16000, 39500],
         color: '#e8646e',
       },
       {
-        //	y: 0,
-        //	mydata: 20,
+        // 	y: 0,
+        // 	mydata: 20,
         name: 'PREMIUM-95',
         data: [18000, 38000, 18000, 18000, 18500, 40500],
         color: '#ffe600',
       },
       {
-        //	y: 0,
-        //	mydata: 30,
+        // 	y: 0,
+        // 	mydata: 30,
         name: 'B10-DIESEL',
         data: [16000, 40500, 21000, 40000, 19200, 40000],
         color: '#c19669',
       },
       {
-        //	mydata: 13,
+        // 	mydata: 13,
         name: 'EURO5-B7',
         data: [17000, 39000, 19000, 22000, 22000, 21000],
         color: '#2496c9',

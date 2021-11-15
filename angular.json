@@ -126,6 +126,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "atomiton-demo"
+    }
+  },
+  "defaultProject": "atomiton-demo",
+  "cli": {
+    "analytics": "adb6a1d4-a93a-461c-973d-5553414020ac"
+  }
 }
